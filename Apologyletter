@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dear Fatima</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(#1e1f26, #3c3b3f);
+      color: white;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .start-btn, .final-btn {
+      background: #ffb6c1;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .start-btn:hover, .final-btn:hover {
+      background: #ff69b4;
+    }
+    .hidden {
+      display: none;
+    }
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: url('https://cdn.pixabay.com/photo/2016/03/31/19/55/stars-1295972_960_720.png') repeat;
+      z-index: -1;
+      opacity: 0.3;
+      animation: moveStars 60s linear infinite;
+    }
+    @keyframes moveStars {
+      from {background-position: 0 0;}
+      to {background-position: 10000px 10000px;}
+    }
+    .flower {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/616/616408.png');
+      background-size: cover;
+      animation: fall 10s linear infinite;
+      z-index: 1;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="container">
+    <h1>Dear Fatima 🌸</h1>
+    <p id="intro">This is just for you. Click below to begin.</p>
+    <button class="start-btn" onclick="startApology()">Start</button><div id="apologySection" class="hidden">
+  <p>Dear Fatima,<br><br>
+    I know I haven’t been the friend you deserved lately. I’ve been distant, and I missed out on moments I wish I could get back. I’m truly sorry — for my absence, for not showing up, and for not being the best friend I promised I’d be.<br><br>
+    But you matter to me. More than I ever say. I miss us. I miss you. 🌙💐
+  </p>
+  <button class="final-btn" onclick="finalMessage()">Next</button>
+</div>
+
+<div id="finalSection" class="hidden">
+  <p>I can’t change the past, but I’ll show you with actions that I’m still the friend who cares deeply for you. 💖<br><br>
+    If you're ready, I'm here — wholeheartedly.<br>
+    — Your not-so-perfect but always-there friend. 💌
+  </p>
+  <a href="https://wa.me/923357786137" target="_blank">
+    <button class="final-btn">Send Me a Hug</button>
+  </a>
+</div>
+
+  </div>  <script>
+    function startApology() {
+      document.querySelector('.start-btn').classList.add('hidden');
+      document.getElementById('intro').classList.add('hidden');
+      document.getElementById('apologySection').classList.remove('hidden');
+      createFlowers();
+    }
+    function finalMessage() {
+      document.getElementById('apologySection').classList.add('hidden');
+      document.getElementById('finalSection').classList.remove('hidden');
+    }
+    function createFlowers() {
+      for (let i = 0; i < 40; i++) {
+        let flower = document.createElement('div');
+        flower.classList.add('flower');
+        flower.style.left = Math.random() * 100 + 'vw';
+        flower.style.animationDuration = (Math.random() * 5 + 5) + 's';
+        flower.style.animationDelay = (Math.random() * 5) + 's';
+        document.body.appendChild(flower);
+      }
+    }
+  </script></body>
+</html>
